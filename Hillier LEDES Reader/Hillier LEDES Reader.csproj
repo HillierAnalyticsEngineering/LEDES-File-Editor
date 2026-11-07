@@ -68,8 +68,26 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="ErrorReporter.cs" />
+    <Compile Include="HelpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ledes\LedesDocument.cs" />
+    <Compile Include="Ledes\LedesFormat.cs" />
+    <Compile Include="Ledes\LedesParser.cs" />
+    <Compile Include="Ledes\LedesValidator.cs" />
+    <Compile Include="Ledes\LedesWriter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Samples\Example_1998B.LED">
+      <LogicalName>Hillier_LEDES_Reader.Samples.Example_1998B.LED</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Samples\Example_1998BI_V2.LED">
+      <LogicalName>Hillier_LEDES_Reader.Samples.Example_1998BI_V2.LED</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Help.txt">
+      <LogicalName>Hillier_LEDES_Reader.Resources.Help.txt</LogicalName>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

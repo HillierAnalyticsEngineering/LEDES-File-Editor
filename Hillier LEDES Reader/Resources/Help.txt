@@ -1,0 +1,96 @@
+HILLIER LEDES FILE EDITOR
+
+This editor opens, checks, edits and writes LEDES e-billing files.
+It starts with an example LEDES 1998B invoice so you can try it right away.
+
+
+SUPPORTED FORMATS
+
+LEDES 1998B
+  Pipe-delimited. 24 fields. First line: LEDES1998B[]
+
+LEDES 1998BI V2
+  Pipe-delimited. 52 fields. Adds tax, currency, PO and address fields.
+  First line: LEDES98BI V2[]
+
+LEDES 1998BI (first release) and other delimited variants
+  The editor reads the column names from the file's own header line.
+  Field rules are applied by column name.
+
+LEDES 2000, LEDES XML 2.0, 2.1 and 2.2
+  The editor lists every <fee> and <expense> line item in the grid.
+  Edits are written back into the original XML. Everything else in the file stays as it was.
+  You can't add or delete XML line items in the grid.
+
+
+BUTTONS
+
+Open (Ctrl+O)
+  Opens a .LED, .TXT or .XML file. The format is detected for you.
+
+Example
+  Loads a bundled sample. Choose LEDES 1998B or LEDES 1998BI V2.
+
+Validate (F5)
+  Checks the file. Problems appear in the Issues tab.
+  Double-click an issue to jump to the cell.
+
+Preview (Ctrl+P)
+  Shows the exact text that will be saved, in the LEDES Output tab.
+
+Save As (Ctrl+S)
+  Writes the file. The editor validates first and warns you about errors.
+  Files are saved through a temporary copy, so a failed save never damages the original.
+
+Format
+  Converts a delimited file between LEDES 1998B and LEDES 1998BI V2.
+  Columns are matched by name. Fields the new format adds start blank, and tax totals start at 0.
+
+Help (F1)
+  Shows this page.
+
+
+EDITING
+
+Click a cell to edit it. Type in the blank last row to add a line item.
+Select a row by its left edge and press Delete to remove it.
+Click a column header to sort. Sorting changes only the view.
+
+
+WHAT VALIDATION CHECKS
+
+Errors (most e-billing systems reject these)
+  Missing required fields.
+  Dates that aren't CCYYMMDD (for example 20260131).
+  Amounts with currency symbols, commas or letters.
+  Line types other than F, E, IF or IE.
+  A "|" or "[]" inside a field. These break the file structure.
+  LINE_ITEM_TOTAL that doesn't equal units x unit cost + adjustment (+ tax in 1998BI V2).
+  INVOICE_TOTAL that doesn't equal the sum of its line totals.
+  Invoice-level fields that differ between lines of the same invoice.
+  Rows with too few or too many fields.
+
+Warnings (worth checking, often client-specific)
+  Fee lines without a timekeeper ID.
+  Expense lines without an expense code.
+  Line dates outside the billing period.
+  Duplicate line item numbers.
+  Fields longer than the format allows.
+  Non-ASCII characters.
+  Tax and net totals in 1998BI V2 that don't add up.
+
+Client billing guidelines often add their own rules, such as required UTBMS task codes.
+Check those with your client's e-billing system.
+
+
+WHEN SOMETHING GOES WRONG
+
+The editor reports problems in a message instead of closing.
+If an unexpected error occurs, details are written to:
+  %LOCALAPPDATA%\HillierLEDES\error.log
+Include that file when you report a bug.
+
+
+LICENSE
+
+Free and open source under the GNU GPL v3.0.
